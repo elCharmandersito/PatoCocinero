@@ -1,4 +1,4 @@
-<body class="body">
+<div class="container-fluid">
   <header class="header">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <label class="navbar-brand text-white" href="#">Recetas Pato Cocinero</label>   
@@ -21,20 +21,78 @@
     </div>
   </form>
 
-  <div class="accordion accordion-flush" id="accordionFlushExample">
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="flush-headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-          
-        </button>
-      </h2>
-      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
-         
+  <br>
+
+  <div class="card">
+    <div class="card-body" *ngIf="firstCall"> <!-- Comprueba que existan elementos en la primera llamada a la API la cual seran mostrados  -->
+      <div class="card card-body" *ngFor="let itemA of infoRecetas"> <!-- Recorre el arreglo para mostrar los elementos   -->
+
+        <!-- INICIO DEL ACORDEON -->
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                <table cellPadding="2">
+
+                </table>
+                
+                <div class="container">
+                  <div class="imageReceta">
+                    <img src={{itemA?.image}} width="100"> <!-- imagen de la receta  -->
+                  </div>
+                  <div class="titleReceta">
+                    {{itemA?.title}} <!-- titulo de la receta  -->
+                  </div>
+                </div>
+              </button>
+            </h2> 
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                <div class="image">
+                  <img src="https://qrtag.net/api/qr_transparent_2.svg?url={{itemA?.sourceUrl}}" alt="CodigoQr" width="150" style="position: relative;">
+                </div> 
+              </div>
+              <tr>
+                <td><i class="fa fa-thumbs-o-up-fa-3x" aria-hidden="true">{{itemA?.aggregateLikes}}</i></td>
+                <td><i class="fa fa-graatipay fa-3x" aria-hidden="true">{{itemA?.healtScore}}</i></td>
+              </tr>
+              <tr>
+                <td><p><b>Porciones: </b> {{itemA?.servings}}</p></td>
+              </tr>
+              <tr>
+                <td><p><b>Tiempo de preparación: </b> {{itemA?.readyInMinutes}} minutos</p></td>
+              </tr>
+              <tr>
+                <td>
+                  <p><b>Datos nutricionales por porcion:</b></p>
+                  <ul>
+                    <li>Calorías: {{itemA?.nutrition.nutrients[0].amount}}</li>
+                    <li>Carbohidratos: {{itemA?.nutrition.nutrients[3].amount}} g</li>
+                    <li>Grasa: {{itemA?.nutrition.nutrients[1].amount}} g</li>
+                    <li>Proteinas: {{itemA?.nutrition.nutrients[9].amount}} g</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p><b>Ingredientes:</b></p>
+                  <ul *ngFor="let i of itemA.extendedIngredients">
+                    <li>{{i?.original}}</li>
+                  </ul>
+                </td>
+              </tr>
+            </div>           
+          </div>
         </div>
+        <!-- FIN DEL ACORDION -->
+
       </div>
-    </div>    
+    </div>
   </div>
+
+
+
+
   <footer class="text-center text-white fixed-bottom" style="font-size:2rem; background-color: transparent">
     <!-- Grid container -->
     <div class="container p-4"></div>
@@ -47,4 +105,4 @@
     </div>
     <!-- Copyright -->
   </footer>
-</body>
+</div>

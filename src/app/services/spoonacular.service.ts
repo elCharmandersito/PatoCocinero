@@ -7,9 +7,8 @@ import { map } from 'rxjs/operators';
 })
 export class SpoonacularService {
   apiKey = '7fd18a364ba44874900b3340d4aaf6d0';
-  number = 3;
+  number = 2;
   URI_RECETA: string = '';
-  URI_INFORMACION = '';
   
 
   constructor(private http:HttpClient) { 
@@ -24,7 +23,7 @@ export class SpoonacularService {
 
   getInformacion(id:number){
     return this.http
-      .get(`https://api.spoonacular.com/recipes/${this.URI_INFORMACION}${id}/information?apiKey=${this.apiKey}&includeNutrition=true`).
+      .get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${this.apiKey}&includeNutrition=true`).
       pipe(map(responce => responce, (error: any) => error));;
   }
 }

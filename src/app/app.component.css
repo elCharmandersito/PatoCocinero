@@ -1,4 +1,4 @@
-.body {
+.container-fluid {
     background: url(../assets/image.jpg) no-repeat center;
     background-size: cover;
     min-height: 100vh;

@@ -19,8 +19,9 @@ export class AppComponent implements OnInit{
   ngOnInit() {}  
 
   async getRecetas(inputIngrediente:string){ 
-    this.sponacularService.getReceta(inputIngrediente)
-    .subscribe(
+    await
+    this.sponacularService.getReceta(inputIngrediente).toPromise()
+    .then(
       response => {
         console.log(response);
         this.firstCall = response;          
@@ -36,9 +37,9 @@ export class AppComponent implements OnInit{
     for(let i = 0 ; i < idRecetas.length ; i++){
       this.sponacularService.getInformacion(this.idRecetas[i])
       .subscribe(
-        data => {
-          console.log(data);
-          this.secondCall = data;          
+        data => {          
+          this.secondCall = data;    
+          console.log(data);      
           this.infoRecetas[i] = this.secondCall;          
       })
     }
