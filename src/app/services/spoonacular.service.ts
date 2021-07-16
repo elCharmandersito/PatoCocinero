@@ -6,7 +6,9 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class SpoonacularService {
-  apiKey = '7fd18a364ba44874900b3340d4aaf6d0';
+  //apiKey = '7fd18a364ba44874900b3340d4aaf6d0';   // Cuenta correo institucional
+  //apiKey = 'b322c1ddccea4f55a3f33394f570d194'; //Cuenta correo habitual
+  apiKey = '1f315ac82b9c4e11bf00b97502b6c751'     // Cuenta 3 
   number = 2;
   URI_RECETA: string = '';
   

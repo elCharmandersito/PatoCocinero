@@ -1,33 +1,12 @@
-.container-fluid {
-    background: url(../assets/image.jpg) no-repeat center;
-    background-size: cover;
-    min-height: 100vh;
+/* ESTE MODIFICA EL TITULO DE LA PAGINA */
+#titulo{
+    color: rgb(0, 0, 0);
+    font-family: 'Kaushan Script', cursive;
+    font-size: 400%;
 }
 
-.header .navbar{
-    background-color: transparent !important;
-}
-
-.navbar-brand {
-    font-size: 70px;
-    font-family: 'Mali';
-    font-style: normal;
-    position: absolute;
-    float: left;
-    margin: 0;
-    left: 10%;
-    transform: translateX(-21%);
-    position: relative;
-}
-
-.accordionFlushExample {
-    font-size: 200%;
-    font-family: 'Mali';
-    font-style: italic;
-}
-
-.accordion-item {
-    font-size: 100%;
-    font-family: 'Mali';
-    font-style: italic;
+/* ESTE MODIFICA EL TITULO ARRIBA DEL INPUT TEXT*/
+#titleUpInput{
+    color: rgb(0, 0, 0);
+    font-family: 'Kaushan Script', cursive;
 }
